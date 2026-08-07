@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giacomo Ficarra - Game Programmer Portfolio</title>
+    <!-- Font Awesome per le icone (GitHub, LinkedIn, ecc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ================= V ARIABILI E RESET ================= */
+        :root {
+            --bg-color: #0f172a; /* Sfondo scuro moderno */
+            --surface-color: #1e293b; /* Colore delle card */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8; /* Azzurro per i link e bottoni */
+            --accent-hover: #0284c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ================= HERO SECTION ================= */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            text-align: left;
+            margin-top: 50px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ================= SEZIONI GENERALI ================= */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-main);
+        }
+
+        /* ================= PORTFOLIO (PROJECTS) ================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #334155;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #000;
+            object-fit: cover;
+            /* Inserisci qui l'URL di una tua GIF/Immagine */
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: var(--bg-color);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* ================= SKILLS ================= */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            header h2 { font-size: 1.5rem; }
+            .nav-links { display: none; /* In un progetto reale qui potresti aggiungere un menu hamburger */ }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo"><strong>Giacomo Ficarra</strong></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Progetti</a></li>
+            <li><a href="#skills">Competenze</a></li>
+            <li><a href="#contact">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home">
+        <h1>Ciao, sono Giacomo Ficarra</h1>
+        <h2>Game Programmer / Developer</h2>
+        <p>Sono un programmatore specializzato nello sviluppo di gameplay e intelligenza artificiale. Creo esperienze interattive usando C++, C# e i principali motori grafici.</p>
+        <div class="social-links">
+            <a href="https://github.com/GiacomoFicarra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/giacomo-ficarra" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:giacomoficarra1999@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="Giacomo_Ficarra_CV.pdf" target="_blank" title="Scarica CV"><i class="fas fa-file-pdf"></i></a>
+        </div>
+    </header>
+
+    <!-- PROGETTI -->
+    <section id="projects">
+        <h2 class="section-title">I Miei Progetti</h2>
+        <div class="projects-grid">
+
+            <!-- Card Progetto 1 -->
+            <div class="project-card">
+                <!-- Sostituisci il src con una TUA GIF! Le GIF attirano l'attenzione -->
+                <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 1" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Custom C++ Game Engine</h3>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">OpenGL</span>
+                        <span class="tag">Entity Component System</span>
+                    </div>
+                    <p class="project-desc">Un motore di gioco 3D costruito da zero. Include un renderer custom, sistema di collisioni basato su AABB e architettura ECS per la gestione delle entità.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> Codice</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-play"></i> Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Progetto 2 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 2" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Stealth Action Game</h3>
+                    <div class="tags">
+                        <span class="tag">Unreal Engine 5</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprints</span>
+                    </div>
+                    <p class="project-desc">Prototipo di un gioco stealth con Behavior Trees per l'intelligenza artificiale dei nemici, sistema di percezione visiva/uditiva e meccaniche di parkour.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> Codice</a>
+                        <a href="#" class="btn btn-outline"><i class="fab fa-itch-io"></i> Gioca</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Progetto 3 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 3" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Multiplayer FPS Controller</h3>
+                    <div class="tags">
+                        <span class="tag">Unity 3D</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Photon PUN</span>
+                    </div>
+                    <p class="project-desc">Un controller in prima persona con predizione lato client e lag compensation, ottimizzato per il multiplayer competitivo.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> Codice</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COMPETENZE -->
+    <section id="skills" style="background-color: rgba(30, 41, 59, 0.5);">
+        <h2 class="section-title">Competenze Tecniche</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Linguaggi</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> C / C++</li>
+                    <li><i class="fas fa-check"></i> C#</li>
+                    <li><i class="fas fa-check"></i> Python</li>
+                    <li><i class="fas fa-check"></i> HLSL / GLSL</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Motori & Strumenti</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Unreal Engine 4/5</li>
+                    <li><i class="fas fa-check"></i> Unity</li>
+                    <li><i class="fas fa-check"></i> Git / Perforce</li>
+                    <li><i class="fas fa-check"></i> CMake</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Aree di focus</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Gameplay Programming</li>
+                    <li><i class="fas fa-check"></i> AI (FSM, Behavior Trees)</li>
+                    <li><i class="fas fa-check"></i> Strutture Dati & Algoritmi</li>
+                    <li><i class="fas fa-check"></i> Matematica per il 3D</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTATTI -->
+    <section id="contact" style="text-align: center; padding-bottom: 2rem;">
+        <h2 class="section-title">Lavoriamo Insieme</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Attualmente sto cercando nuove opportunità come Junior/Mid Game Programmer.</p>
+        <a href="mailto:giacomoficarra1999@gmail.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">Contattami via Email</a>
+    </section>
+
+    <!-- JAVASCRIPT PER LO SCROLL FLUIDO -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
