@@ -219,6 +219,41 @@
             background: rgba(56, 189, 248, 0.1);
         }
 
+        /* ================= FILTRI PROGETTI ================= */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: var(--bg-color);
+        }
+
+        /* Classe aggiunta tramite JS per nascondere i progetti */
+        .project-card.hidden {
+            display: none;
+        }
+
         /* ================= SKILLS ================= */
         .skills-container {
             display: flex;
@@ -281,10 +316,19 @@
     <!-- PROGETTI -->
     <section id="projects">
         <h2 class="section-title">I Miei Progetti</h2>
+
+        <!-- Pulsanti di Filtro -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="unity">Unity</button>
+            <button class="filter-btn" data-filter="unreal">Unreal Engine</button>
+            <button class="filter-btn" data-filter="custom">Custom Engine</button>
+        </div>
+
         <div class="projects-grid">
 
             <!-- Card Progetto 1 -->
-            <div class="project-card">
+            <div class="project-card" data-engine="unreal">
                 <!-- Sostituisci il src con una TUA GIF! Le GIF attirano l'attenzione -->
                 <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 1" class="project-img">
                 <div class="project-content">
@@ -303,7 +347,7 @@
             </div>
 
             <!-- Card Progetto 2 -->
-            <div class="project-card">
+            <div class="project-card" data-engine="unreal">
                 <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 2" class="project-img">
                 <div class="project-content">
                     <h3 class="project-title">GAS Multiplayer hero game</h3>
@@ -321,7 +365,7 @@
             </div>
 
             <!-- Card Progetto 3 -->
-            <div class="project-card">
+            <div class="project-card" data-engine="unity">
                 <img src="https://via.placeholder.com/400x200/222/aaa?text=Gameplay+GIF" alt="Progetto 3" class="project-img">
                 <div class="project-content">
                     <h3 class="project-title">Space Shooter 2D</h3>
@@ -385,6 +429,34 @@
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
+                });
+            });
+        });
+
+        // LOGICA PER I FILTRI DEI PROGETTI
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Rimuovi la classe 'active' da tutti i bottoni
+                filterBtns.forEach(button => button.classList.remove('active'));
+                
+                // 2. Aggiungi la classe 'active' al bottone cliccato
+                btn.classList.add('active');
+
+                // 3. Prendi il valore del filtro (es. 'unity', 'unreal', 'all')
+                const filterValue = btn.getAttribute('data-filter');
+
+                // 4. Mostra/Nascondi le card
+                projectCards.forEach(card => {
+                    const engineValue = card.getAttribute('data-engine');
+                    
+                    if (filterValue === 'all' || filterValue === engineValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
                 });
             });
         });
