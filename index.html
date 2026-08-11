@@ -129,7 +129,10 @@
         /* ================= PORTFOLIO (PROJECTS) ================= */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            /* Impostiamo una larghezza minima di 300px e MASSIMA di 380px */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+            /* Centra le card nella pagina se ce n'è solo 1 o 2 */
+            justify-content: center;
             gap: 2rem;
         }
 
@@ -322,7 +325,6 @@
             <button class="filter-btn active" data-filter="all">Tutti</button>
             <button class="filter-btn" data-filter="unity">Unity</button>
             <button class="filter-btn" data-filter="unreal">Unreal Engine</button>
-            <button class="filter-btn" data-filter="custom">Custom Engine</button>
         </div>
 
         <div class="projects-grid">
