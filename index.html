@@ -345,13 +345,27 @@
             color: var(--accent);
         }
 
-        #modal-img {
+        #modal-media-container {
+            margin-bottom: 1.5rem;
+        }
+
+        #modal-media-container img {
             width: 100%;
             height: auto;
             max-height: 400px;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #000;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+        }
+
+        /* Gestione due GIF affiancate in cima */
+        #modal-media-container .side-by-side {
+            display: flex;
+            gap: 1rem;
+        }
+
+        #modal-media-container .side-by-side img {
+            width: 50%;
         }
 
         #modal-body {
@@ -381,7 +395,7 @@
             width: 100%;
             height: auto;
             max-height: 400px; /* Limita l'altezza per non occupare tutto lo schermo */
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 8px;
             border: 1px solid #334155;
             margin-top: 1.5rem;
@@ -526,6 +540,14 @@
             <!-- Card Progetto 3 -->
             <div class="project-card" data-engine="unity">
                 <img src="Assets/SpaceShooter2D-gameplay.gif" alt="Space Shooter 2D" class="project-img">
+
+                <div class="project-top-media" style="display: none;">
+                    <div class="side-by-side">
+                        <img src="Assets/SpaceShooter2D-gameplay.gif" alt="Gameplay 1">
+                        <img src="Assets/SpaceShooter2D_Boss.gif" alt="Gameplay 2">
+                    </div>
+                </div>
+
                 <div class="project-content">
                     <h3 class="project-title">Space Shooter 2D</h3>
                     <div class="tags">
@@ -541,6 +563,21 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- ================= DETTAGLI EXTRA PER LA MODALE ================= -->
+                <div class="project-details" style="display: none;">
+                    
+                    <p>Space Shooter 2D is an arcade-style video game developed with Unity.</p>
+
+                    <h4>I focused on:</h4>
+                    <ul>
+                        <li>Waves of enemies made with Scriptable Objects</li>
+                        <li>Infinite Loop with best score saving</li>
+                        <li>Different enemy types and power ups</li>
+                    </ul>
+                    
+                </div>
+                <!-- ============================================================== -->
             </div>
 
             <!-- Card Progetto 4 -->
@@ -625,7 +662,7 @@
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal"><i class="fas fa-times"></i></span>
-            <img id="modal-img" src="" alt="Project Image">
+            <div id="modal-media-container"></div>
             <h3 id="modal-title" class="section-title" style="margin-bottom: 1rem; font-size: 2.2rem; text-align: left;"></h3>
             <div id="modal-tags" class="tags"></div>
             <!-- Qui dentro andrà la descrizione dettagliata -->
@@ -675,7 +712,7 @@
 
         // ================= LOGICA PER LA MODALE =================
         const modal = document.getElementById('project-modal');
-        const modalImg = document.getElementById('modal-img');
+        const modalMediaContainer = document.getElementById('modal-media-container');
         const modalTitle = document.getElementById('modal-title');
         const modalTags = document.getElementById('modal-tags');
         const modalBody = document.getElementById('modal-body');
@@ -694,11 +731,18 @@
                 const links = card.querySelector('.project-links').innerHTML;
                 
                 // Preleva i dettagli espansi (se ci sono)
+                const customTopMedia = card.querySelector('.project-top-media');
                 const detailsDiv = card.querySelector('.project-details');
                 const basicDesc = card.querySelector('.project-desc').innerHTML;
 
+                // 1. GESTIONE MEDIA IN CIMA: Se c'è un media custom (side-by-side), usa quello. Altrimenti usa l'immagine singola standard.
+                if (customTopMedia) {
+                    modalMediaContainer.innerHTML = customTopMedia.innerHTML;
+                } else {
+                    modalMediaContainer.innerHTML = `<img src="${img}" alt="Project Image">`;
+                }
+
                 // Inserisci i dati nella modale
-                modalImg.src = img;
                 modalTitle.innerHTML = title;
                 modalTags.innerHTML = tags;
                 modalLinks.innerHTML = links;
