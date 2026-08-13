@@ -346,6 +346,16 @@
         }
 
         /* ================= GIF AFFIANCATE (SIDE-BY-SIDE) ================= */
+        .side-by-side {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .side-by-side img {
+            width: 50% !important;
+            max-height: 220px; /* Regola questo valore per ingrandire o rimpicciolire le GIF */
             object-fit: cover;  /* Mantiene il ritaglio pulito senza deformare la GIF */
             border-radius: 8px;
             border: 1px solid #334155;
@@ -366,6 +376,7 @@
         }
 
         /* Gestione due GIF affiancate in cima */
+        /*
         #modal-media-container .side-by-side {
             display: flex;
             gap: 1rem;
@@ -374,6 +385,7 @@
         #modal-media-container .side-by-side img {
             width: 50%;
         }
+        */
 
         #modal-body {
             color: var(--text-muted);
@@ -601,7 +613,10 @@
                     <div class="tags">
                         <span class="tag">Unity 2D</span>
                         <span class="tag">C#</span>
+                        <span class="tag">Combat System</span>
                         <span class="tag">Boss AI</span>
+                        <span class="tag">Tilemap</span>
+                        <span class="tag">Cinemachine Virtual Camera</span>
                     </div>
                     <p class="project-desc">A Metroidvania-style video game developed with Unity</p>
                     <div class="project-links">
@@ -610,6 +625,34 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- ================= DETTAGLI EXTRA PER LA MODALE ================= -->
+                <div class="project-details" style="display: none;">
+                    
+                    <p>A Metroidvania-style video game developed with Unity, with four levels and a Bossfight. To create the levels, I used Tilemap. For the combat system, I used animations to trigger attacks and to enable and disable colliders.</p>
+
+                    <h4>I focused on:</h4>
+                    <ul>
+                        <li>Character movement and platforming mechanics</li>
+                        <li>Cinemachine Virtual Camera</li>
+                        <li>Simple combat system and Power-ups</li>
+                        <li>Boss AI</li>
+                        <li>2D Animations</li>
+                    </ul>
+
+                    <h4>Some Levels:</h4>
+
+                    <div class="side-by-side">
+                        <img src="Assets/Metroidvania_Level_1.gif" alt="Metroidvania Levels">
+                        <img src="Assets/Metroidvania_Level_2.gif" alt="Metroidvania Levels">
+                    </div>
+
+                    <div class="side-by-side">
+                        <img src="Assets/Metroidvania_Level_3.gif" alt="Metroidvania Levels">
+                        <img src="Assets/Metroidvania_Level_4.gif" alt="Metroidvania Levels">
+                    </div>
+                </div>
+                <!-- ============================================================== -->
             </div>
 
             <!-- Card Progetto 5 -->
