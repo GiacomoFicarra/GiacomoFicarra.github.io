@@ -376,6 +376,18 @@
             margin-bottom: 0.5rem; /* Aggiunge un po' di respiro tra un punto e l'altro */
         }
 
+        /* Stile per le immagini extra aggiunte dentro la modale */
+        #modal-body img {
+            width: 100%;
+            height: auto;
+            max-height: 400px; /* Limita l'altezza per non occupare tutto lo schermo */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         /* Rende le card cliccabili visivamente */
         .project-card {
             cursor: pointer;
@@ -432,14 +444,14 @@
 
             <!-- Card Progetto 1 -->
             <div class="project-card" data-engine="unreal">
-                <!-- Sostituisci il src con una TUA GIF! Le GIF attirano l'attenzione -->
                 <img src="Assets/ShadowLoop-ObjectInteraction.gif" alt="Shadowloop" class="project-img">
                 <div class="project-content">
                     <h3 class="project-title">Shadowloop</h3>
                     <div class="tags">
-                        <span class="tag">C++</span>
+                        <span class="tag">Team Project</span>
                         <span class="tag">UnrealEngine 5</span>
-                        <span class="tag">Team Development</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprint</span>
                     </div>
                     <p class="project-desc">An horror-themed puzzle game developed in a team of three programmers and five designers using Unreal Engine Blueprints and C++.</p>
                     <div class="project-links">
@@ -449,7 +461,6 @@
                 </div>
 
                 <!-- ================= DETTAGLI EXTRA PER LA MODALE ================= -->
-                <!-- Questo blocco non si vedrà sulla card, ma si vedrà nella modale! -->
                 <div class="project-details" style="display: none;">
                     <p>Shadowloop is an horror-themed puzzle game developed in a team of three programmers and five designers. The main goal was to create a haunting experience where the player must use the environment to solve environmental puzzles.</p>
                     
@@ -481,15 +492,35 @@
                 <div class="project-content">
                     <h3 class="project-title">GAS Multiplayer hero game</h3>
                     <div class="tags">
+                        <span class="tag">Gameplay Ability System</span>
                         <span class="tag">Unreal Engine 5</span>
                         <span class="tag">C++</span>
-                        <span class="tag">Gameplay Ability System</span>
+                        <span class="tag">Blueprint</span>
+                        <span class="tag">Animation</span>
                     </div>
                     <p class="project-desc">Prototype of a multiplayer game that uses Gameplay Ability System for abilities and talents</p>
                     <div class="project-links">
                         <a href="https://github.com/GiacomoFicarra/GAS_Nexus" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
+
+                <!-- ================= DETTAGLI EXTRA PER LA MODALE ================= -->
+                <div class="project-details" style="display: none;">
+                    <p>GAS Multiplayer hero game is a prototype of a multiplayer game developed to learn about the Unreal Engine Gameplay Ability System.</p>
+                    <p>I created a custom Ability class and implemented active and passive abilities using the GAS framework</p>
+                    <p>Then i developed a simple Talent tree to grant abilities and increment ability levels.</p>
+
+                    <img src="Assets/GAS_multiplayer_Talent_Tree.png" alt="Talent tree screenshot">
+
+                    <h4>I focused on:</h4>
+                    <ul>
+                        <li>Gameplay Attribute and Attribute Sets</li>
+                        <li>Gameplay Ability System (Abilities, Effects, Cues)</li>
+                        <li>Replication</li>
+                    </ul>
+                    
+                </div>
+                <!-- ============================================================== -->
             </div>
 
             <!-- Card Progetto 3 -->
@@ -500,6 +531,7 @@
                     <div class="tags">
                         <span class="tag">Unity 2D</span>
                         <span class="tag">C#</span>
+                        <span class="tag">Scriptable Objects</span>
                         <span class="tag">Infinite loop</span>
                     </div>
                     <p class="project-desc">A Space Shooter 2D video game developed with Unity</p>
