@@ -282,6 +282,28 @@
             gap: 0.5rem;
         }
 
+        /* Stile per l'email in chiaro */
+        .email-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background-color: var(--surface-color);
+            border: 1px solid #334155;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            user-select: all; /* Facilita la selezione del testo al click */
+        }
+
+        .email-display:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+        }
+
         /* ================= RESPONSIVE ================= */
         @media (max-width: 768px) {
             header h1 { font-size: 3rem; }
@@ -451,7 +473,7 @@
 
     <!-- HERO SECTION -->
     <header id="home">
-        <h1>Ciao, sono Giacomo Ficarra</h1>
+        <h1>Giacomo Ficarra</h1>
         <h2>Game Programmer</h2>
         <p>I am a game programmer specializing in gameplay development. I use C++, Unreal Engine, C# and Unity.</p>
         <div class="social-links">
@@ -697,30 +719,29 @@
 
     <!-- COMPETENZE -->
     <section id="skills" style="background-color: rgba(30, 41, 59, 0.5);">
-        <h2 class="section-title">Competenze Tecniche</h2>
+        <h2 class="section-title">Technical Skills</h2>
         <div class="skills-container">
             <div class="skill-category">
-                <h3>Linguaggi</h3>
+                <h3>Languages</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check"></i> C++</li>
                     <li><i class="fas fa-check"></i> C#</li>
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Motori & Strumenti</h3>
+                <h3>Engines & Tools</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Unreal Engine 4/5</li>
+                    <li><i class="fas fa-check"></i> Unreal Engine 5</li>
                     <li><i class="fas fa-check"></i> Unity</li>
                     <li><i class="fas fa-check"></i> Git</li>
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Aree di focus</h3>
+                <h3>Focus Areas</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check"></i> Gameplay Programming</li>
-                    <li><i class="fas fa-check"></i> AI (FSM, Behavior Trees)</li>
-                    <li><i class="fas fa-check"></i> Strutture Dati & Algoritmi</li>
-                    <li><i class="fas fa-check"></i> Matematica per il 3D</li>
+                    <li><i class="fas fa-check"></i> AI (State Trees, Behavior Trees)</li>
+                    <li><i class="fas fa-check"></i> 3D Math</li>
                 </ul>
             </div>
         </div>
@@ -728,9 +749,23 @@
 
     <!-- FOOTER / CONTATTI -->
     <section id="contact" style="text-align: center; padding-bottom: 2rem;">
-        <h2 class="section-title">Lavoriamo Insieme</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Attualmente sto cercando nuove opportunità come Junior Game Programmer.</p>
-        <a href="mailto:giacomoficarra1999@gmail.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">Contattami via Email</a>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">I am currently looking for new opportunities as a Junior Game Programmer.</p>
+        
+        <!-- Email scritta per esteso, perfettamente selezionabile e cliccabile -->
+        <div style="margin-bottom: 2.5rem;">
+            <a href="mailto:giacomoficarra1999@gmail.com" class="email-display" title="Clicca per inviare un'email o seleziona per copiare">
+                <i class="fas fa-envelope"></i> giacomoficarra1999@gmail.com
+            </a>
+        </div>
+
+        <!-- Bottoni Social (gli stessi della Home, centrate per il footer) -->
+        <div class="social-links" style="justify-content: center;">
+            <a href="https://github.com/GiacomoFicarra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/giacomo-ficarra" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:giacomoficarra1999@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="Giacomo_Ficarra_CV.pdf" target="_blank" title="Download CV"><i class="fas fa-file-pdf"></i></a>
+        </div>
     </section>
 
     <!-- ================= FINESTRA MODALE PROGETTO ================= -->
